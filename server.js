@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 
-const port = process.env.PORT ? process.env.PORT : "3000";
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
@@ -26,12 +25,21 @@ app.use(morgan('dev'));
 ///////////////////////// Declare Routes and Routers ///////////////////////
 // INDUCES - Index, New, Delete, Update, Create, Edit, Show
 
+app.get("/", async (req,res) => {
+    res.render("index.ejs");
+});
 
+app.get("/plants", async (req,res) => {
+    res.render("plants.ejs")
+})
 
+app.get("/plants/new", async (req,res) => {
+    res.render("new.ejs")
+})
 
 
 
 ///////////////////////////// Server Listener///////////////////////////
-app.listen(port, () => {
-    console.log('The Express app is ready on port ${port}!')
-})
+app.listen(4000, () => {
+    console.log("listening on port 4000")
+});
