@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
 const  plantSchema = new mongoose.Schema({
-    name: {type: String, reuired:true},
-    description: {type: String, required: true},
-    image: String,
+    name: String, 
+    description: String,
+    type: String,
+    indoor: Boolean,
+    
 });
 
 const Plant = mongoose.model('Plant', plantSchema);

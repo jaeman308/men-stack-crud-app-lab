@@ -1,13 +1,14 @@
 ////////////////////////// Setup - Import deps and create app object////////////////////////
-const dotenv = require("dotenv");
-dotenv.config()
-const express = require("express");
-const app = express();
+require("dotenv").config()
 
+const express = require("express");
+const Plant = require("./models/plant.js")
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const path = require("path");
 
+const app = express();
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
@@ -30,14 +31,32 @@ app.get("/", async (req,res) => {
 });
 
 app.get("/plants", async (req,res) => {
-    res.render("plants.ejs")
-})
+    const allPlants = await Plant.find();
+    // console.log(allPlants);
+    res.render("plants/index.ejs", {plants: allPlants})
+});
 
 app.get("/plants/new", async (req,res) => {
-    res.render("new.ejs")
-})
+    res.render("plants/new.ejs");
+});
 
 
+app.get("/plants/:plantId/edit", async (req, res) => {
+    const foundPlant = await Plant.findyById(req.params.plantId);
+    console.log(foundPlant);
+    res.render("plants/edit.ejs", {plant: foundPlant,});
+});
+
+
+app.post("/plants", async (req,res) => {
+    if (req.body.indoor === 'on')  {
+        req.body.indoor = true
+    }else {
+        raw.body.indoor = false
+    }
+    await Plant.create(req.body);
+    res.redirect("/plants")
+});
 
 ///////////////////////////// Server Listener///////////////////////////
 app.listen(4000, () => {

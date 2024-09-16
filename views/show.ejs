@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=plant.name%></title>
+</head>
+<body>
+    <h1><%= plant.name %></h1>
+
+    <% if (plant.indoor) {%>
+        <p> This plant is an indoor plant!</p>
+        <%}else {%>
+          <p>This plant is not consider an indoor plant!</p>
+        <%}%>
+    
+</body>
+</html>
