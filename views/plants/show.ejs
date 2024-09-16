@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=plant.name%></title>
+</head>
+<body>
+    <h1><%= plant.name %></h1>    
+    <ul>
+      <li>Description: <%= plant.description%> </li> 
+      <li>Type: <%= plant.type%></li>
+      <li><% if (plant.indoor) {%>
+        <p> This plant is best for indoors!</p>
+        <%}else {%>
+          <p>This plant is best for outdoors!</p>
+        <%}%></li>
+      </ul>
+      <form action="/plants/<%=plant._id%>?_method=DELETE" method="POST">
+        <button type="submit"> Delete <%= plant.name %></button>
+      </form>
+</body>
+</html>

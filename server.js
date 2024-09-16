@@ -41,20 +41,35 @@ app.get("/plants/new", async (req,res) => {
 });
 
 
-app.get("/plants/:plantId/edit", async (req, res) => {
-    const foundPlant = await Plant.findyById(req.params.plantId);
-    console.log(foundPlant);
-    res.render("plants/edit.ejs", {plant: foundPlant,});
-});
+// app.get("/plants/:plantId/edit", async (req, res) => {
+//     const foundPlant = await Plant.findyById(req.params.plantId);
+//     // console.log(foundPlant);
+//     res.render("plants/edit.ejs", {plant: foundPlant,});
+// });
 
-
-app.post("/plants", async (req,res) => {
-    if (req.body.indoor === 'on')  {
+app.put("/plants/:plantId", async (req, res)=> {
+    if (req.body.indoor === 'on'){
         req.body.indoor = true
     }else {
-        raw.body.indoor = false
+        req.body.indoor = false
     }
-    await Plant.create(req.body);
+    await Plant.findByIdandUpdate(req.params.plantId, req.body);
+
+    res.redirect(`/plants/${req.params.plantId}`);
+});
+
+app.get("/plants/:plantId", async (req, res) => {
+  const foundPlant = await Plant.findById(req.params.plantId);
+  res.render("plants/show.ejs", {plant: foundPlant})
+});
+
+app.post("/plants", async (req,res) => {
+    if (req.body.indoor === 'on'){
+        req.body.indoor = true
+    }else {
+        req.body.indoor = false
+    }
+     await Plant.create(req.body);
     res.redirect("/plants")
 });
 

@@ -7,11 +7,10 @@
 </head>
 <body>
     <h1>All Your Plants</h1>
-    <% console.log(plants, "console from ejs")%>
+    <!-- <% console.log(plants, "console from ejs")%> -->
     <div>
-        <ul>
-            <% plants.forEach((plant) => { %>
-                <li><a href="/plants/<= plant._id%>"> <%= plant.name%></a>
+        <ul><% plants.forEach(plant => { %>
+                <li><a href="/plants/<%= plant._id %>"> <%= plant.name %></a>
                 </li>
            <% }) %>
         </ul>
