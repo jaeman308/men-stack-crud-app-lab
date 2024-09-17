@@ -19,7 +19,7 @@ mongoose.connection.on("connected", () => {
 app.use(express.urlencoded({ extended: false}));
 app.use(methodOverride("_method"));
 app.use(morgan('dev'));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 
 
@@ -41,11 +41,11 @@ app.get("/plants/new", async (req,res) => {
 });
 
 
-// app.get("/plants/:plantId/edit", async (req, res) => {
-//     const foundPlant = await Plant.findyById(req.params.plantId);
-//     // console.log(foundPlant);
-//     res.render("plants/edit.ejs", {plant: foundPlant,});
-// });
+app.get("/plants/:plantId/edit", async (req, res) => {
+    const foundPlant = await Plant.findById(req.params.plantId);
+    // console.log(foundPlant);
+    res.render("plants/edit.ejs", {plant: foundPlant, });
+});
 
 app.put("/plants/:plantId", async (req, res)=> {
     if (req.body.indoor === 'on'){
@@ -61,6 +61,11 @@ app.put("/plants/:plantId", async (req, res)=> {
 app.get("/plants/:plantId", async (req, res) => {
   const foundPlant = await Plant.findById(req.params.plantId);
   res.render("plants/show.ejs", {plant: foundPlant})
+});
+
+app.delete("/plants/:plantId", async (req,res)=> {
+    await Plant.findByIdAndDelete(req.params.plantId)
+    res.redirect("/plants")
 });
 
 app.post("/plants", async (req,res) => {

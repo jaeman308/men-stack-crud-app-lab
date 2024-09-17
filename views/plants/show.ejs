@@ -1,9 +1,11 @@
+<%- include('../partials/nav') %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=plant.name%></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
     <h1><%= plant.name %></h1>    
@@ -18,6 +20,9 @@
       </ul>
       <form action="/plants/<%=plant._id%>?_method=DELETE" method="POST">
         <button type="submit"> Delete <%= plant.name %></button>
+
       </form>
+      <a href="/plants/<%= plant._id %>/edit">Edit <%= plant.name %></a>
+      <a href="/plants">Back to All Plants</a>
 </body>
 </html>

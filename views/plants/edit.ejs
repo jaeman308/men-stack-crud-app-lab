@@ -1,19 +1,39 @@
+<%- include('../partials/nav') %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-    <h1><Edit <%= plant.name %></h1>
+    <h1>Edit <%= plant.name %></h1>
+      
         <form action="'/plants<%=plant._id%>?method=PUT" method="'POST">
+            <ul>
+            <li>
             <label for=""name>Name:</label>
             <input type="text" name="name" id="name"/>
-
-            <label for="description"></label>
-d
+            </li>
+            <li>
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description"/>
+            </li>
+            <li>
+            <label for="type">Type:</label>
+            <input type="text" name="type" id="type"/>
+            </li>
+            <li>
+            <label for="indoor">Indoor</label>
+            <input type="checkbox"
+                    name="indoor" 
+                    id="indoor"
+                    <% if(plant.indoor){%> checked <% } %>/>
+            </li>
+            <button type="submit"> Update Plant</button>
+            </ul>
         </form>
-    
+        
 </body>
 </html>
