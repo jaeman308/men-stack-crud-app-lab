@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-    <h1><%= plant.name %></h1>    
+    <h1><%= plant.name %></h1>   
+    <di class="plantDetails"> 
     <ul>
       <li>Description: <%= plant.description%> </li> 
       <li>Type: <%= plant.type%></li>
@@ -18,6 +19,7 @@
           <p>This plant is best for outdoors!</p>
         <%}%></li>
       </ul>
+      </div>
       <form action="/plants/<%=plant._id%>?_method=DELETE" method="POST">
         <button type="submit"> Delete <%= plant.name %></button>
 

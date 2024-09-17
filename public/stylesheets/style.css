@@ -1,12 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+.inria-sans-light {
+  font-family: "Inria Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.josefin-sans-<uniquifier {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
 body {
     background: #E0E4D4;
-    font-family: "DM Sans", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 100vw;
   }
+ 
 
   .navbar {
     list-style-type: none;
@@ -20,7 +37,46 @@ body {
     margin: auto;
     overflow: hidden;
   }
+  .navbar a {
+    color: #9B4922;
+  }
   .navbar a:hover {
     background-color: black;
     color: white;
+    border-radius: 10px;
   }
+
+h1 {
+  font-family: "Josefin Sans", sans-serif;
+    font-size: 50px;
+}
+
+p {
+  font-family: "Inria Sans", sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.plant {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 25px;
+}
+.plant ul{
+  list-style-type: none;
+
+}
+.plant a{
+  color: #9B4922;
+
+}
+.plant a:hover{
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+
+}

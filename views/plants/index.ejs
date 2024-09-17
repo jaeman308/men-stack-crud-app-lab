@@ -9,12 +9,13 @@
 </head>
 <body>
     <h1>All Your Plants</h1>
-    <div>
+    <div class="plant">
         <ul><% plants.forEach(plant => { %>
                 <li><a href="/plants/<%= plant._id %>"> <%= plant.name %></a>
                 </li>
            <% }) %>
         </ul>
+        <img src="https://i.postimg.cc/HxnYFJkz/Plant-Pal-5.png" alt="single plant">
     </div>
 </body>
 </html>
