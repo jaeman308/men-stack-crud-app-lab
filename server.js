@@ -53,7 +53,7 @@ app.put("/plants/:plantId", async (req, res)=> {
     }else {
         req.body.indoor = false
     }
-    await Plant.findByIdandUpdate(req.params.plantId, req.body);
+    await Plant.findByIdAndUpdate(req.params.plantId, req.body);
 
     res.redirect(`/plants/${req.params.plantId}`);
 });
