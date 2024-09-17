@@ -33,7 +33,7 @@ app.get("/", async (req,res) => {
 app.get("/plants", async (req,res) => {
     const allPlants = await Plant.find();
     // console.log(allPlants);
-    res.render("plants/index.ejs", {plants: allPlants})
+    res.render("plants/index.ejs", {plants: allPlants});
 });
 
 app.get("/plants/new", async (req,res) => {
@@ -60,12 +60,12 @@ app.put("/plants/:plantId", async (req, res)=> {
 
 app.get("/plants/:plantId", async (req, res) => {
   const foundPlant = await Plant.findById(req.params.plantId);
-  res.render("plants/show.ejs", {plant: foundPlant})
+  res.render("plants/show.ejs", {plant: foundPlant});
 });
 
 app.delete("/plants/:plantId", async (req,res)=> {
-    await Plant.findByIdAndDelete(req.params.plantId)
-    res.redirect("/plants")
+    await Plant.findByIdAndDelete(req.params.plantId);
+    res.redirect("/plants");
 });
 
 app.post("/plants", async (req,res) => {
